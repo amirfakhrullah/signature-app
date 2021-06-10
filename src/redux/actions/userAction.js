@@ -2,6 +2,7 @@ export const FETCH_ALL_USERS = 'FETCH_ALL_USERS';
 export const FETCH_USER_BY_ID = 'FETCH_USER_BY_ID';
 export const FETCH_USER_BY_EMAIL = 'FETCH_USER_BY_EMAIL';
 export const LOADING = 'LOADING';
+export const FAIL = 'FAIL';
 
 const URL = 'https://limitless-citadel-83805.herokuapp.com';
 
@@ -17,8 +18,7 @@ export const fetchAllUsers = () => {
     return async dispatch => {
 
         dispatch({
-            type: LOADING,
-            payload: true
+            type: LOADING
         });
 
         const result = await fetch(`${URL}/api/users`, initialOptions)
@@ -28,15 +28,25 @@ export const fetchAllUsers = () => {
                 }
             }).then(jsonResponse => {
                 if (!jsonResponse) {
+                    dispatch({
+                        type: LOADING,
+                        payload: 'failed'
+                    });
                     return [];
                 }
                 return jsonResponse;
             })
 
-        dispatch({
-            type: FETCH_ALL_USERS,
-            payload: result[0]
-        });
+        if (!result[0]) {
+            dispatch({
+                type: FAIL
+            });
+        } else {
+            dispatch({
+                type: FETCH_ALL_USERS,
+                payload: result[0]
+            });
+        }
     };
 };
 
@@ -45,8 +55,7 @@ export const fetchUserById = (id) => {
     return async dispatch => {
 
         dispatch({
-            type: LOADING,
-            payload: true
+            type: LOADING
         });
 
         const result = await fetch(`${URL}/api/users/${id}`, initialOptions)
@@ -56,15 +65,25 @@ export const fetchUserById = (id) => {
                 }
             }).then(jsonResponse => {
                 if (!jsonResponse) {
+                    dispatch({
+                        type: LOADING,
+                        payload: 'failed'
+                    });
                     return {};
                 }
                 return jsonResponse;
             })
 
-        dispatch({
-            type: FETCH_USER_BY_ID,
-            payload: result
-        });
+        if (!result[0]) {
+            dispatch({
+                type: FAIL
+            });
+        } else {
+            dispatch({
+                type: FETCH_USER_BY_ID,
+                payload: result[0]
+            });
+        }
     };
 };
 
@@ -74,7 +93,6 @@ export const fetchUserByEmail = (email) => {
 
         dispatch({
             type: LOADING,
-            payload: true
         });
 
         const result = await fetch(`${URL}/api/users/email/${email}`, initialOptions)
@@ -89,9 +107,15 @@ export const fetchUserByEmail = (email) => {
                 return jsonResponse;
             })
 
-        dispatch({
-            type: FETCH_USER_BY_EMAIL,
-            payload: result[0]
-        });
+        if (!result[0]) {
+            dispatch({
+                type: FAIL
+            });
+        } else {
+            dispatch({
+                type: FETCH_USER_BY_EMAIL,
+                payload: result[0]
+            });
+        }
     };
 };

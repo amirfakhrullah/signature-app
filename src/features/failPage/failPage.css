@@ -1,0 +1,12 @@
+.failPage {
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.failPage h2 {
+    color: #102170;
+    font-size: 2em;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
