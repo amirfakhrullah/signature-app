@@ -1,0 +1,50 @@
+.loadingContainer {
+    padding-top: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loadingContainer h2 {
+    color: #102170;
+    font-size: 2em;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
+
+.loaderIcon {
+    margin: 0 auto;
+    margin-top: 30px;
+    position: relative;
+    animation: roll 4s infinite;
+}
+
+@keyframes roll {
+    0% {
+        right: 200px;
+        transform: rotate(0deg);
+    }
+    50% {
+        right: -200px;
+        transform: rotate(360deg);
+    }
+    100% {
+        right: 200px;
+        transform: rotate(0deg);
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    @keyframes roll {
+        0% {
+            transform: rotate(0deg);
+        }
+        50% {
+            transform: rotate(360deg);
+        }
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+}

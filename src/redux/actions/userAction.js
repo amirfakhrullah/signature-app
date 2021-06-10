@@ -1,6 +1,7 @@
 export const FETCH_ALL_USERS = 'FETCH_ALL_USERS';
 export const FETCH_USER_BY_ID = 'FETCH_USER_BY_ID';
 export const FETCH_USER_BY_EMAIL = 'FETCH_USER_BY_EMAIL';
+export const LOADING = 'LOADING';
 
 const URL = 'https://limitless-citadel-83805.herokuapp.com';
 
@@ -14,6 +15,11 @@ export const initialOptions = {
 
 export const fetchAllUsers = () => {
     return async dispatch => {
+
+        dispatch({
+            type: LOADING,
+            payload: true
+        });
 
         const result = await fetch(`${URL}/api/users`, initialOptions)
             .then(response => {
@@ -38,6 +44,11 @@ export const fetchAllUsers = () => {
 export const fetchUserById = (id) => {
     return async dispatch => {
 
+        dispatch({
+            type: LOADING,
+            payload: true
+        });
+
         const result = await fetch(`${URL}/api/users/${id}`, initialOptions)
             .then(response => {
                 if (response.ok) {
@@ -60,6 +71,11 @@ export const fetchUserById = (id) => {
 
 export const fetchUserByEmail = (email) => {
     return async dispatch => {
+
+        dispatch({
+            type: LOADING,
+            payload: true
+        });
 
         const result = await fetch(`${URL}/api/users/email/${email}`, initialOptions)
             .then(response => {
