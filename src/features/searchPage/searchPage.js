@@ -37,7 +37,7 @@ export default function SearchPage(props) {
                 width="300"
             />
             <div className="searchContainer">
-                <p className="typeInEmail">Type-in your e-mail to get your E-mail Signature</p>
+                <p className="typeInEmail">Type-in your ImanShoppe e-mail to get your Signature</p>
                 <div className="searchbar">
                     <SearchIcon />
                     <label>

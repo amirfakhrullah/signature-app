@@ -43,8 +43,8 @@
 
 .button-result {
     font-size: 16px;
-    color: black;
-    background-color: white;
+    color: white;
+    background-color: black;
     padding: 10px 15px;
     border-radius: 5px;
     border: 1px solid black;
@@ -52,8 +52,8 @@
 
 .button-result:hover {
     cursor: pointer;
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: white;
 }
 
 @media only screen and (max-width: 800px) {
