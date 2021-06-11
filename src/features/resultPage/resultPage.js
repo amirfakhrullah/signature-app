@@ -31,38 +31,15 @@ export default function ResultPage() {
                         </div>
                     </div>
                     <div className="button-container">
-                        <a className='button-result' onClick={() => {
+                        <p className='button-result' onClick={() => {
                             history.push(`/user/${userData._id}`)
-                        }}>Click</a>
+                        }}>Click</p>
                     </div>
                 </div>
         );
     } else if (status === 'failed') {
         content = (<FailPage />);
     };
-
-    // return (
-    //     <div>
-    //         {loading ? <LoadingPage /> : (
-    //             <div className='resultPage'>
-    //                 <h2>Result: </h2>
-    //                 <div className='result-with-button'>
-    //                     <div className='resultContainer'>
-    //                         <div className='result'>
-    //                             <p>{userData.name}</p>
-    //                             <p>{userData.email}</p>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //                 <div className="button-container">
-    //                     <a className='button-result' onClick={() => {
-    //                         history.push(`/user/${userData._id}`)
-    //                     }}>Click</a>
-    //                 </div>
-    //             </div>
-    //         )}
-    //     </div>
-    // )
 
     return <React.Fragment>{content}</React.Fragment>;
 }

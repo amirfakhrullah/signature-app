@@ -16,11 +16,12 @@ export default function SignaturePage() {
             <h3 style={{ color: 'grey', margin: '0', fontFamily: 'calibri', fontWeight: '500' }}>
                 IMAN Media Group Sdn Bhd
             </h3>
-            <a href="https://imanmedia.com.my" target="_blank">
+            <a href="https://imanmedia.com.my" target="_blank" rel="noreferrer" >
                 <img
                     src="https://imanpublication.com/wp-content/uploads/2021/06/logo-iman-21-signature.png"
                     width="150"
                     style={{ margin: '0' }}
+                    alt="logoIman"
                 />
             </a>
             <p style={{ marginTop: '0', fontSize: '16px', fontFamily: 'calibri', fontWeight: '500' }}>

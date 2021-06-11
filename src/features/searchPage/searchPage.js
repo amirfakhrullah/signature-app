@@ -35,6 +35,7 @@ export default function SearchPage(props) {
             <img
                 src="https://imanpublication.com/wp-content/uploads/2021/06/logo-iman-21-signature.png"
                 width="300"
+                alt="logoIman"
             />
             <div className="searchContainer">
                 <p className="typeInEmail">Type-in your ImanShoppe e-mail to get your Signature</p>
