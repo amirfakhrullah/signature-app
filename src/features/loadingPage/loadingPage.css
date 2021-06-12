@@ -1,5 +1,6 @@
 .loadingContainer {
-    padding-top: 150px;
+    /* padding-top: 150px; */
+    padding-top: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
