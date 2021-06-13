@@ -33,6 +33,7 @@ export default function SignaturePage() {
                     href="https://www.google.com/maps/dir//iman+media+group/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x31cdcb8b8eebb2c5:0x2b39c280a7f87690?sa=X&ved=2ahUKEwj_1MWUhIrxAhV2zTgGHceuCTkQ9RcwDHoECDAQAw"
                     target="_blank"
                     style={{ textDecoration: 'none', color: 'black' }}
+                    rel="noreferrer"
                 > Kajang, Selangor, Malaysia</a>
             </p>
         </div>

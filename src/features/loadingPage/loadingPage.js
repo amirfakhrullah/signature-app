@@ -10,7 +10,7 @@ export default function LoadingPage() {
     return (
         <div className="loadingContainer">
             {/* <h2>Loading. . .</h2> */}
-            <img src={logogif} />
+            <img src={logogif} width="400px" />
             {/* <img className="loaderIcon" src={logoiman} width='120em' /> */}
         </div>
     )
