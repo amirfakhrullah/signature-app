@@ -29,8 +29,7 @@ export const fetchAllUsers = () => {
             }).then(jsonResponse => {
                 if (!jsonResponse) {
                     dispatch({
-                        type: LOADING,
-                        payload: 'failed'
+                        type: FAIL
                     });
                     return [];
                 }
@@ -66,8 +65,7 @@ export const fetchUserById = (id) => {
             }).then(jsonResponse => {
                 if (!jsonResponse) {
                     dispatch({
-                        type: LOADING,
-                        payload: 'failed'
+                        type: FAIL
                     });
                     return {};
                 }

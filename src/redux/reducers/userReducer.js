@@ -12,8 +12,10 @@ const initialState = {
     status: 'idle'
 };
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default function (state = initialState, action) {
 
+    // eslint-disable-next-line default-case
     switch (action.type) {
         case FETCH_ALL_USERS:
             return {
