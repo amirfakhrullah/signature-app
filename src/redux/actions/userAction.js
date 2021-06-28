@@ -32,7 +32,7 @@ export const fetchAllUsers = () => {
                         type: FAIL
                     });
                     return [];
-                }
+                };
                 return jsonResponse;
             })
 

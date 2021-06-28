@@ -1,12 +1,23 @@
 .failPage {
-    padding-top: 100px;
+    padding-top: 10vh;
     display: flex;
     flex-direction: column;
 }
 
 .failPage h2 {
-    color: #102170;
+    color: #080A52;
     font-size: 2em;
     margin: 0 auto;
     padding-bottom: 20px;
+}
+
+.home-button {
+    width: 170px;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .home-button {
+        width: 40vw;
+    }
 }

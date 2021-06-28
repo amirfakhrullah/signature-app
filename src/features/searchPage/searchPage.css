@@ -1,5 +1,5 @@
 .searchPage {
-    padding-top: 100px;
+    padding-top: 10vh;
     display: flex;
     flex-direction: column;
 }
@@ -9,46 +9,57 @@
 }
 
 .searchContainer {
-    padding: 20px;
-    margin: 50px 10px;
     margin: 0 auto;
-    max-width: 500px;
-    min-width: 300px;
-    background-color: #102170;
+    background-color: #080A52;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
     border-radius: 20px;
 }
 
-p.typeInEmail {
+.typeInEmail {
     color: white;
-    text-align: center;
-    max-width: 400px;
+    padding-bottom: 20px;
 }
 
-.searchbar {
-    display: flex;
-    align-items: center;
+.form-email {
+    width: 25vw;
+    padding: 10px;
+    margin: 10px 0;
     background-color: white;
-    padding: 10px 10px;
-    margin: 10px;
-    border-radius: 999px;
+    border: 0px;
+    border-radius: 5px;
 }
 
-.searchbar label,
-.searchbar input {
-    background-color: white;
+.button-email {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #E63484;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    border: 0px;
 }
 
-.searchbar input {
-    border: none;
-    background-color: transparent;
-    outline-width: 0;
-    max-width: 200px;
+.button-email:hover {
+    background-color: #912052;
 }
 
-input, select, textarea{
-    color: black;
-}
+@media only screen and (max-width: 800px) {
+    .searchPage img {
+        width: 60vw;
+    }
 
-textarea:focus, input:focus {
-    color: black;
+    .searchContainer {
+        width: 80vw;
+    }
+
+    .form-email {
+        width: 70vw;
+    }
 }

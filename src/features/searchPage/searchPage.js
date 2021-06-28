@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as userAction from '../../redux/actions/userAction';
 
-import SearchIcon from '@material-ui/icons/Search';
+import { Button, Form } from 'semantic-ui-react';
 
 export default function SearchPage(props) {
     const dispatch = useDispatch();
@@ -25,6 +25,11 @@ export default function SearchPage(props) {
             history.push('/result');
         };
     };
+    const handleClick = () => {
+        dispatch(userAction.fetchUserByEmail(searchItem))
+        setSearchItem('');
+        history.push('/result');
+    }
 
     const handleTextChange = (e) => {
         setSearchItem(e.target.value);
@@ -38,13 +43,19 @@ export default function SearchPage(props) {
                 alt="logoIman"
             />
             <div className="searchContainer">
-                <p className="typeInEmail">Type-in your ImanShoppe e-mail to get your Signature</p>
-                <div className="searchbar">
-                    <SearchIcon />
-                    <label>
-                        <input type="text" id="search" placeholder="search..." onChange={handleTextChange} value={searchItem} onKeyPress={handleKeyPress} />
-                    </label>
-                </div>
+                <h2 className="typeInEmail">Welcome to Signature App</h2>
+                <p className="typeInEmail">Type-in your ImanShoppe Email to get your Signature</p>
+                <Form>
+                    <Form.Field>
+                        <input
+                            className="form-email"
+                            placeholder='Email'
+                            onChange={handleTextChange}
+                            value={searchItem}
+                            onKeyPress={handleKeyPress} />
+                    </Form.Field>
+                    <Button className="button-email" onClick={handleClick}>Submit</Button>
+                </Form>
             </div>
         </div>
     )

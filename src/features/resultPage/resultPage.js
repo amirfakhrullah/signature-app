@@ -1,18 +1,40 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './resultPage.css';
 
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
+
 import LoadingPage from '../loadingPage/loadingPage';
 import FailPage from '../failPage/failPage';
 
+import { Button } from 'semantic-ui-react';
+
 
 export default function ResultPage() {
+
     const history = useHistory();
 
     const userData = useSelector(state => state.user.userData);
     const status = useSelector(state => state.user.status);
+
+    function titleCase(str) {
+        var splitStr = str.toLowerCase().split(' ');
+        for (var i = 0; i < splitStr.length; i++) {
+            // You do not need to check if i is larger than splitStr length, as your for does that for you
+            // Assign it back to the array
+            splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+        }
+        // Directly return the joined string
+        return splitStr.join(' ');
+    }
+
+    useEffect(() => {
+        if (status === 'idle') {
+            window.location.href = '/';
+        }
+    });
+
 
     let content;
 
@@ -21,21 +43,19 @@ export default function ResultPage() {
     } else if (status === 'succeed') {
         content = (
             <div className='resultPage'>
-                    <h2>Result: </h2>
-                    <div className='result-with-button'>
-                        <div className='resultContainer'>
-                            <div className='result'>
-                                <p>{userData.name}</p>
-                                <p>{userData.email}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="button-container">
-                        <p className='button-result' onClick={() => {
-                            history.push(`/user/${userData._id}`)
-                        }}>Click</p>
-                    </div>
+                <h2>Welcome Back {titleCase(userData.name)} !</h2>
+                <div className="info-container">
+                    <p>Name: {titleCase(userData.name)}</p>
+                    <p>Designation: {titleCase(userData.position)}</p>
+                    <p>Email: {userData.email}</p>
+                    <p>Contact No: {userData.phone}</p>
                 </div>
+
+                <div className="button-container">
+                    <Button className="button-email result-page-button secondary-button" onClick={() => window.location.href = '/'}>Back to Login</Button>
+                    <Button className="button-email result-page-button" onClick={() => history.push(`/user/${userData._id}`)}>Get Signature</Button>
+                </div>
+            </div>
         );
     } else if (status === 'failed') {
         content = (<FailPage />);

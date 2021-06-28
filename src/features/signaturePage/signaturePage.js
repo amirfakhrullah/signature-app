@@ -1,17 +1,52 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import './signaturePage.css';
 
 import { useSelector } from 'react-redux';
 
+import FileCopyIcon from '@material-ui/icons/FileCopy';
+
+import { Button } from 'semantic-ui-react';
+
 export default function SignaturePage() {
+
+    const status = useSelector(state => state.user.status);
     const userData = useSelector(state => state.user.userData);
 
-    return (
-        <div className='signaturePage'>
+    function titleCase(str) {
+        var splitStr = str.toLowerCase().split(' ');
+        for (var i = 0; i < splitStr.length; i++) {
+            // You do not need to check if i is larger than splitStr length, as your for does that for you
+            // Assign it back to the array
+            splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+        }
+        // Directly return the joined string
+        return splitStr.join(' ');
+    }
+
+    // logic to copy text/html
+    function copyDivToClipboard() {
+        var range = document.createRange();
+        range.selectNode(document.getElementById("copy-signature"));
+        window.getSelection().removeAllRanges(); // clear current selection
+        window.getSelection().addRange(range); // to select text
+        document.execCommand("copy");
+        window.getSelection().removeAllRanges();// to deselect
+        alert('Email signature copied ')
+    }
+
+    useEffect(() => {
+        if (status === 'idle') {
+            window.location.href = '/';
+        }
+    });
+
+    const sign = (
+        <div id="copy-signature">
             <h3 style={{ color: 'grey', margin: '0', fontFamily: 'calibri', fontSize: '1.2em' }}>
-                {userData.name}
+                {userData.name && titleCase(userData.name)}
             </h3>
             <h3 style={{ color: 'grey', margin: '0', fontFamily: 'calibri', fontWeight: '500' }}>
-                {userData.position}
+                {userData.position && titleCase(userData.position)}
             </h3>
             <h3 style={{ color: 'grey', margin: '0', fontFamily: 'calibri', fontWeight: '500' }}>
                 IMAN Media Group Sdn Bhd
@@ -36,6 +71,22 @@ export default function SignaturePage() {
                     rel="noreferrer"
                 > Kajang, Selangor, Malaysia</a>
             </p>
+        </div>
+    )
+
+    return (
+        <div className='signaturePage'>
+            <h2>Here's Your Email Signature:</h2>
+            <div className="signature-container">
+                {userData.name && <React.Fragment>{sign}</React.Fragment>}
+            </div>
+            <div className="copy-button">
+                <p>Click to copy signature =&gt;</p>
+                <div className="copy-icon" onClick={copyDivToClipboard}>
+                    <FileCopyIcon style={{color: 'white'}} className="copy-icon-svg" />
+                </div>
+            </div>
+            <Button className="button-email result-page-button email-signature-page-home-button" onClick={() => window.location.href = '/'}>Back to Login</Button>
         </div>
     )
 }
