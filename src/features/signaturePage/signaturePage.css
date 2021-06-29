@@ -15,7 +15,6 @@
 .signature-container {
     border: 1px solid #080A52;
     width: 30vw;
-    height: 30vh;
     padding: 40px;
     border-radius: 20px;
 }
@@ -69,11 +68,72 @@
 
     .signature-container {
         width: 70vw;
-        height: 40vh;
         padding: 20px;
     }
     .copy-button, 
     .email-signature-page-home-button {
         width: 70vw;
     }
+}
+
+.pink1 {
+    border: 0.5px solid #F90084;
+    /* background-color: #F90084; */
+    margin: 20px 1px 30px 1px;
+}
+
+.pink2 {
+    border: 0.1px solid #F90084;
+    /* background-color: #F90084; */
+    margin: 30px 1px 10px 1px;
+}
+
+.logo-iman-signature {
+    margin-top: 10px;
+}
+
+.px16 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.px14 {
+    font-size: 14px;
+}
+
+.px16,
+.px14 {
+    margin: 0px;
+}
+
+.px11 {
+    font-size: 12px;
+    font-weight: bold;
+    margin: 3px 0;
+}
+
+.px14,
+.px16,
+.px11 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #080A52;
+}
+
+.mid-container {
+    display: flex;
+    /* align-items: center; */
+}
+
+.icon-material-ui {
+    color: #F90084;
+    margin: 3px 10px;
+}
+
+.icon-material-ui2 {
+    color: #F90084;
+    margin: 0px 5px;
+}
+
+.bottom-container {
+    margin-left: 30px
 }

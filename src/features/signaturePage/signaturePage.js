@@ -7,6 +7,16 @@ import FileCopyIcon from '@material-ui/icons/FileCopy';
 
 import { Button } from 'semantic-ui-react';
 
+import PhoneIcon from '@material-ui/icons/Phone';
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import LanguageIcon from '@material-ui/icons/Language';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+
+import YouTubeIcon from '@material-ui/icons/YouTube';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import InstagramIcon from '@material-ui/icons/Instagram';
+
 export default function SignaturePage() {
 
     const status = useSelector(state => state.user.status);
@@ -34,6 +44,11 @@ export default function SignaturePage() {
         alert('Email signature copied ')
     }
 
+    // logic to add space in phone number
+    const editPhoneNo = (no) => {
+        return [no.slice(0, 7), ' ', no.slice(7)].join('')
+    }
+
     useEffect(() => {
         if (status === 'idle') {
             window.location.href = '/';
@@ -42,35 +57,57 @@ export default function SignaturePage() {
 
     const sign = (
         <div id="copy-signature">
-            <h3 style={{ color: 'grey', margin: '0', fontFamily: 'calibri', fontSize: '1.2em' }}>
-                {userData.name && titleCase(userData.name)}
-            </h3>
-            <h3 style={{ color: 'grey', margin: '0', fontFamily: 'calibri', fontWeight: '500' }}>
-                {userData.position && titleCase(userData.position)}
-            </h3>
-            <h3 style={{ color: 'grey', margin: '0', fontFamily: 'calibri', fontWeight: '500' }}>
-                IMAN Media Group Sdn Bhd
-            </h3>
+            <p className="px16">{userData.name && titleCase(userData.name)}</p>
+            <p className="px14">{userData.position && titleCase(userData.position)}</p>
+            <p className="px14">IMAN Media Group Sdn. Bhd.</p>
             <a href="https://imanmedia.com.my" target="_blank" rel="noreferrer" >
-                <img
-                    src="https://imanpublication.com/wp-content/uploads/2021/06/logo-iman-21-signature.png"
-                    width="150"
-                    style={{ margin: '0' }}
-                    alt="logoIman"
-                />
+                <img className="logo-iman-signature" src="https://imanmedia.com.my/wp-content/uploads/2021/06/iman-signature.png" alt="logo" width="200px" />
             </a>
-            <p style={{ marginTop: '0', fontSize: '16px', fontFamily: 'calibri', fontWeight: '500' }}>
-                Phone: +6{userData.phone}
-            </p>
-            <p style={{ marginTop: '0', fontSize: '16px', fontFamily: 'calibri', fontWeight: '500' }}>
-                Office:
+
+            <hr className="pink1" />
+
+            <div className="mid-container">
+                <PhoneIcon className="icon-material-ui" style={{ fontSize: '15px' }} />
+                <p className="px11">03-8940 7284 | {userData.phone && editPhoneNo(userData.phone)}</p>
+            </div>
+
+            <div className="mid-container">
+                <MailOutlineIcon className="icon-material-ui" style={{ fontSize: '15px' }} />
+                <p className="px11">{userData.email}</p>
+            </div>
+
+            <div className="mid-container">
+                <LanguageIcon className="icon-material-ui" style={{ fontSize: '15px' }} />
+                <p className="px11">imanmedia.com.my</p>
+            </div>
+
+            <div className="mid-container">
+                <LocationOnIcon className="icon-material-ui" style={{ fontSize: '15px' }} />
                 <a
                     href="https://www.google.com/maps/dir//iman+media+group/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x31cdcb8b8eebb2c5:0x2b39c280a7f87690?sa=X&ved=2ahUKEwj_1MWUhIrxAhV2zTgGHceuCTkQ9RcwDHoECDAQAw"
                     target="_blank"
-                    style={{ textDecoration: 'none', color: 'black' }}
+                    style={{ textDecoration: 'none' }}
                     rel="noreferrer"
-                > Kajang, Selangor, Malaysia</a>
-            </p>
+                ><p className="px11">12, Jalan Industri Kidamai 2/1,<br />Taman Industri Kidamai,<br />43200 Kajang, Selangor</p>
+                </a>
+            </div>
+
+            <hr className="pink2" />
+
+            <div className="bottom-container">
+                <a href="https://www.youtube.com/user/ImanShoppe" target="_blank" rel="noreferrer">
+                    <YouTubeIcon className="icon-material-ui2" style={{ fontSize: '20px' }} />
+                </a>
+                <a href="https://twitter.com/imanpublication?lang=en" target="_blank" rel="noreferrer">
+                    <TwitterIcon className="icon-material-ui2" style={{ fontSize: '20px' }} />
+                </a>
+                <a href="https://www.facebook.com/imanmediagroup/" target="_blank" rel="noreferrer">
+                    <FacebookIcon className="icon-material-ui2" style={{ fontSize: '20px' }} />
+                </a>
+                <a href="https://www.instagram.com/imanmediagroup/?hl=en" target="_blank" rel="noreferrer">
+                    <InstagramIcon className="icon-material-ui2" style={{ fontSize: '20px' }} />
+                </a>
+            </div>
         </div>
     )
 
@@ -83,7 +120,7 @@ export default function SignaturePage() {
             <div className="copy-button">
                 <p>Click to copy signature =&gt;</p>
                 <div className="copy-icon" onClick={copyDivToClipboard}>
-                    <FileCopyIcon style={{color: 'white'}} className="copy-icon-svg" />
+                    <FileCopyIcon style={{ color: 'white' }} className="copy-icon-svg" />
                 </div>
             </div>
             <Button className="button-email result-page-button email-signature-page-home-button" onClick={() => window.location.href = '/'}>Back to Login</Button>
