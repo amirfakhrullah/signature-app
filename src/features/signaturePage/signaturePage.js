@@ -107,11 +107,10 @@ export default function SignaturePage() {
     return (
         <div className='signaturePage'>
             <h2>Here's Your Email Signature:</h2>
-            <p style={{paddingBottom: '20px'}}>Guides to set email signature on Gmail: <a href="https://docs.google.com/document/d/1MZEioYLH0vc3292zlU-V2QWyYVdPrul0Io7l8XTQ-Hs/edit?usp=sharing" 
+            <p style={{paddingBottom: '20px', marginLeft: '10px'}}>Guides to set email signature on Gmail: <a href="https://docs.google.com/document/d/1MZEioYLH0vc3292zlU-V2QWyYVdPrul0Io7l8XTQ-Hs/edit?usp=sharing" 
                 target="_blank" 
                 rel="noreferrer"
-                className="button-email result-page-button secondary-button"
-                style={{marginLeft: '5px'}} >Click here</a></p>
+                style={{fontWeight: 'bold', textDecoration: 'underline'}} >Click here</a></p>
             <div className="signature-container">
                 {userData.name && <React.Fragment>{sign}</React.Fragment>}
             </div>
