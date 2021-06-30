@@ -1,5 +1,5 @@
 .signaturePage {
-    padding-top: 10vh;
+    padding-top: 5vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -76,6 +76,17 @@
     }
 }
 
+@media only screen and (max-width: 400px) {
+    .signature-container {
+        padding: 10px;
+        min-width: 270px;
+    }
+
+    .copy-button p {
+        font-size: 13px;
+    }
+}
+
 .pink1 {
     border: 0.5px solid #F90084;
     /* background-color: #F90084; */
@@ -90,6 +101,7 @@
 
 .logo-iman-signature {
     margin-top: 10px;
+    width: 215px;
 }
 
 .px16 {
@@ -108,8 +120,7 @@
 
 .px11 {
     font-size: 12px;
-    font-weight: bold;
-    margin: 3px 0;
+    margin: 3px 0
 }
 
 .px14,
@@ -124,16 +135,21 @@
     /* align-items: center; */
 }
 
-.icon-material-ui {
-    color: #F90084;
+.icon-material-ui1 {
     margin: 3px 10px;
+    height: 15px;
 }
 
 .icon-material-ui2 {
-    color: #F90084;
     margin: 0px 5px;
+    height: 18px;
 }
 
 .bottom-container {
     margin-left: 30px
+}
+
+a {
+    text-decoration: none;
+    color: #080A52;
 }

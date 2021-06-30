@@ -7,7 +7,7 @@ export default function FailPage() {
     return (
         <div className="failPage">
             <h2>No Result Found!</h2>
-            <Button className="button-email home-button" onClick={() => window.location.href='/'}>Back to Login</Button>
+            <Button className="button-email home-button" onClick={() => window.location.href='/'}>Back to Home</Button>
         </div>
     )
 }

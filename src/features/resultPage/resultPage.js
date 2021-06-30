@@ -19,6 +19,9 @@ export default function ResultPage() {
     const status = useSelector(state => state.user.status);
 
     function titleCase(str) {
+        if (str === "Chief Executive Officer of IMAN Publication" | str === "Senior E-Commerce Executive / Product Manager ISB" | str === "Senior Operation B2C Executive" | str === "IT Executive" | str === "E-Commerce Fulfillment" | str === "Head of HR and Admin Department") {
+            return str;
+        }
         var splitStr = str.toLowerCase().split(' ');
         for (var i = 0; i < splitStr.length; i++) {
             // You do not need to check if i is larger than splitStr length, as your for does that for you
@@ -52,7 +55,7 @@ export default function ResultPage() {
                 </div>
 
                 <div className="button-container">
-                    <Button className="button-email result-page-button secondary-button" onClick={() => window.location.href = '/'}>Back to Login</Button>
+                    <Button className="button-email result-page-button secondary-button" onClick={() => window.location.href = '/'}>Back to Home</Button>
                     <Button className="button-email result-page-button" onClick={() => history.push(`/user/${userData._id}`)}>Get Signature</Button>
                 </div>
             </div>
