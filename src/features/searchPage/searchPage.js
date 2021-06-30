@@ -44,7 +44,7 @@ export default function SearchPage(props) {
             />
             <div className="searchContainer">
                 <h2 className="typeInEmail">Welcome to Signature App</h2>
-                <p className="typeInEmail">Type-in your ImanShoppe Email to get your Signature</p>
+                <p className="typeInEmail">Type-in your IMANShoppe Email to get your signature</p>
                 <Form>
                     <Form.Field>
                         <input
