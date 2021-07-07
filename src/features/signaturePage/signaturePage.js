@@ -12,20 +12,6 @@ export default function SignaturePage() {
     const status = useSelector(state => state.user.status);
     const userData = useSelector(state => state.user.userData);
 
-    function titleCase(str) {
-        if (str === "Chief Executive Officer of IMAN Publication" | str === "Senior E-Commerce Executive / Product Manager ISB" | str === "Senior Operation B2C Executive" | str === "IT Executive" | str === "E-Commerce Fulfillment" | str === "Head of HR and Admin Department") {
-            return str;
-        }
-        var splitStr = str.toLowerCase().split(' ');
-        for (var i = 0; i < splitStr.length; i++) {
-            // You do not need to check if i is larger than splitStr length, as your for does that for you
-            // Assign it back to the array
-            splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
-        }
-        // Directly return the joined string
-        return splitStr.join(' ');
-    }
-
     // logic to copy text/html
     function copyDivToClipboard() {
         var range = document.createRange();
@@ -50,8 +36,8 @@ export default function SignaturePage() {
 
     const sign = (
         <div id="copy-signature">
-            <p className="px16">{userData.name && titleCase(userData.name)}</p>
-            <p className="px14">{userData.position && titleCase(userData.position)}</p>
+            <p className="px16">{userData.emailName && userData.emailName}</p>
+            <p className="px14">{userData.position && userData.position}</p>
             <p className="px14">IMAN Media Group Sdn. Bhd.</p>
             <a href="https://imanmedia.com.my" target="_blank" rel="noreferrer" >
                 <img className="logo-iman-signature" src="https://imanmedia.com.my/wp-content/uploads/2021/06/IMAN21_logoemelArtboard-99-copy-7@3x.png" alt="logo" width="200px" />
@@ -81,7 +67,7 @@ export default function SignaturePage() {
                     target="_blank"
                     style={{ textDecoration: 'none', pointerEvents: 'none' }}
                     rel="noreferrer"
-                ><p className="px11">12, Jalan Industri Kidamai 2/1,<br />Taman Industri Kidamai,<br />43200 Kajang, Selangor</p>
+                ><p className="px11">12, Jalan Industri Kidamai 2/1,<br />Taman Industri Kidamai 2,<br />43000 Kajang, Selangor</p>
                 </a>
             </div>
 
