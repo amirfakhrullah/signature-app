@@ -1,0 +1,20 @@
+
+.return-btn {
+    color: white;
+    font-size: 12px;
+}
+
+.return-btn span {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.return-btn span:hover {
+    color: #E63484;
+}
+
+.error-message {
+    text-align: center;
+    color: #080A52;
+    margin-bottom: 20px;
+}

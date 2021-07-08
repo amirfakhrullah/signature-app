@@ -2,6 +2,9 @@ import {
     FETCH_ALL_USERS,
     FETCH_USER_BY_ID,
     FETCH_USER_BY_EMAIL,
+    CREATE_USER,
+    UPDATE_USER,
+    DELETE_USER,
     LOADING,
     FAIL
 } from '../actions/userAction';
@@ -9,7 +12,8 @@ import {
 const initialState = {
     allUsers: [],
     userData: {},
-    status: 'idle'
+    status: 'idle',
+    message: ''
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -33,6 +37,24 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 userData: action.payload,
+                status: 'succeed'
+            }
+        case CREATE_USER:
+            return {
+                ...state,
+                message: action.payload.message,
+                status: 'succeed'
+            }
+        case UPDATE_USER:
+            return {
+                ...state,
+                message: action.payload.message,
+                status: 'succeed'
+            }
+        case DELETE_USER:
+            return {
+                ...state,
+                message: action.payload.message,
                 status: 'succeed'
             }
         case LOADING:

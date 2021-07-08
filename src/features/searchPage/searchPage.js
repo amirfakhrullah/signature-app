@@ -56,6 +56,7 @@ export default function SearchPage(props) {
                     </Form.Field>
                     <Button className="button-email" onClick={handleClick}>Submit</Button>
                 </Form>
+                <p className="return-btn">To login as admin, <span onClick={() => window.location.href='/admin/login'}>Click here</span></p>
             </div>
         </div>
     )
