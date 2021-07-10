@@ -1,0 +1,99 @@
+.header-admin {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #080A52;
+    position: sticky;
+    top: 0px;
+}
+
+.logout-btn {
+    background-color: #F90084;
+    border: none;
+    padding: 5px 10px;
+    font-size: 15px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 1vw;
+}
+
+.logout-btn:hover {
+    background-color: #a00055;
+}
+
+.dropdown-menu {
+    padding: 5px 10px;
+    color: white;
+}
+
+.dropdown-menu:hover {
+    background-color: #a00055;
+}
+
+
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    font-size: 14px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.btn-table {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+    .fullname {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .position {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .emailName {
+        display: none;
+    }
+}
+
+
+@media only screen and (max-width: 500px) {
+    .admin-name {
+        display: none;
+    }
+
+    .phone {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 410px) {
+    .admin-name {
+        display: none;
+    }
+
+    .email {
+        display: none;
+    }
+
+    .emailName {
+        display: block;
+    }
+}

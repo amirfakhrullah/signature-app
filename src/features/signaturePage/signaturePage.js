@@ -20,7 +20,7 @@ export default function SignaturePage() {
         window.getSelection().addRange(range); // to select text
         document.execCommand("copy");
         window.getSelection().removeAllRanges();// to deselect
-        alert('Email signature copied ')
+        alert('Email signature copied')
     }
 
     // logic to add space in phone number
