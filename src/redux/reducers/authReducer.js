@@ -30,7 +30,7 @@ export default function (state = initialState, action) {
                 ...state,
                 errors: true,
                 loading: 'fail',
-                errorMessage: action.payload
+                errorMessage: action.payload.message
             };
         case LOGIN_ADMIN_SUCCESS:
             return {
@@ -43,12 +43,12 @@ export default function (state = initialState, action) {
                 ...state,
                 errors: true,
                 loading: 'fail',
-                errorMessage: action.payload
+                errorMessage: action.payload.message
             }
         case UPDATE_PASSWORD_SUCCESS:
             return {
                 ...state,
-                message: action.payload,
+                message: action.payload.message,
                 loading: 'success'
             }
         case UPDATE_PASSWORD_FAIL:
@@ -56,7 +56,7 @@ export default function (state = initialState, action) {
                 ...state,
                 errors: true,
                 loading: 'fail',
-                errorMessage: action.payload
+                errorMessage: action.payload.message
             }
         case LOADING:
             return {

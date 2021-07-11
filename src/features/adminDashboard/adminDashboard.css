@@ -36,7 +36,9 @@
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 98vw;
+    margin: 0 auto;
+    margin-bottom: 20px;
 }
 
 td, th {
@@ -99,5 +101,10 @@ tr:nth-child(even) {
 
     .emailName {
         display: block;
+    }
+
+    .btn-table {
+        padding: 2px 5px;
+        font-size: 8px;
     }
 }

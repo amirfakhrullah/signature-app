@@ -10,6 +10,7 @@ import AdminDashboard from './features/adminDashboard/adminDashboard';
 import AddEmployeePage from './features/addEmployeePage/addEmployeePage';
 import UpdateEmployeePage from './features/updateEmployeePage/updateEmployeePage';
 import DeleteEmployeePage from './features/deleteEmployeePage/deleteEmployeePage';
+import UpdatePasswordPage from './features/updatePasswordPage/updatePasswordPage';
 
 
 export default function App() {
@@ -37,6 +38,9 @@ export default function App() {
         </Route>
         <Route path={"/admin/update-user/:id"} component={UpdateEmployeePage} />
         <Route path={"/admin/delete-user/:id"} component={DeleteEmployeePage} />
+        <Route path={'/admin/update-password'}>
+          <UpdatePasswordPage />
+        </Route>
       </Switch>
     </Router>
   )

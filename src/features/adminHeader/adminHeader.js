@@ -35,7 +35,8 @@ export default function AdminHeader(props) {
                 src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_1566/https://imanmedia.com.my/wp-content/uploads/2021/06/IMAN21_LogoAlternate.png"
                 width="130"
                 alt="logoIman"
-                style={{ marginLeft: '1vw' }}
+                style={{ marginLeft: '1vw', cursor: 'pointer' }}
+                onClick={() => window.location.href="/admin/dashboard"}
             />
             {
                 props.adminInfo && (
@@ -49,8 +50,8 @@ export default function AdminHeader(props) {
 
                             <Dropdown.Menu style={{ backgroundColor: '#F90084', zIndex: '45', display: 'flex', flexDirection: 'column' }}>
                                 <Dropdown.Item className="dropdown-menu" onClick={() => getSignature()}>Get Signature</Dropdown.Item>
-                                <Dropdown.Item className="dropdown-menu" onClick={() => history.push(`/admin/update-user/${props.userId}`)}>Update Info</Dropdown.Item>
-                                <Dropdown.Item className="dropdown-menu" onClick={() => history.push(`/admin/update-password/${props.id}`)}>Update Password</Dropdown.Item>
+                                <Dropdown.Item className="dropdown-menu" onClick={() => window.location.href=`/admin/update-user/${props.userId}`}>Update Info</Dropdown.Item>
+                                <Dropdown.Item className="dropdown-menu" onClick={() => window.location.href=`/admin/update-password`}>Update Password</Dropdown.Item>
                                 <Dropdown.Item className="dropdown-menu" onClick={() => Logout()}>Logout</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>

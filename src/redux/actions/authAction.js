@@ -94,7 +94,7 @@ export const updatePassword = data => {
         });
 
         const result = await fetch(`${URL}/api/auth/update-password/${id}`, {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'auth-token': window.localStorage.getItem('token'),
                 Accept: 'application/json',
@@ -106,6 +106,7 @@ export const updatePassword = data => {
             })
         });
         const resultJson = await result.json();
+        console.log(resultJson)
 
         if (resultJson.success) {
             dispatch({
