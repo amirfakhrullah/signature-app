@@ -10,6 +10,15 @@ import LoadingPage from '../loadingPage/loadingPage';
 
 import { Formik } from 'formik';
 import { Button, Form } from 'semantic-ui-react';
+import * as yup from 'yup';
+
+export const formSchema = yup.object({
+    name: yup.string().required('Name is required'),
+    emailName: yup.string().required('Short Name is required'),
+    email: yup.string().email('Must be an email').required('Email is required'),
+    position: yup.string().required('Designation is required'),
+    phone: yup.string().required('Phone Number is required')
+});
 
 export default function AddEmployeePage() {
 
@@ -26,6 +35,11 @@ export default function AddEmployeePage() {
         };
 
         const decoded = decodeToken(token);
+        if (decoded.exp < (Date.now() / 1000)) {
+            window.localStorage.removeItem('token');
+            window.location.href = '/admin/login'
+        }
+
         setId(decoded._id);
         setEmail(decoded.email);
         setUserId(decoded.userId);
@@ -68,6 +82,7 @@ export default function AddEmployeePage() {
                             position: '',
                             phone: ''
                         }}
+                        validationSchema={formSchema}
                         onSubmit={(values) => {
                             dispatch(userAction.createUser({
                                 name: values.name,
@@ -89,6 +104,8 @@ export default function AddEmployeePage() {
                             /* and other goodies */
                         }) => (
                             <Form>
+                                <p className="label__input">Full Name</p>
+                                <p className="fail-p">{errors.name && touched.name && errors.name}</p>
                                 <Form.Field>
                                     <input
                                         name="name"
@@ -98,6 +115,8 @@ export default function AddEmployeePage() {
                                         value={values.name} />
                                 </Form.Field>
 
+                                <p className="label__input">Short Name</p>
+                                <p className="fail-p">{errors.emailName && touched.emailName && errors.emailName}</p>
                                 <Form.Field>
                                     <input
                                         name="emailName"
@@ -107,16 +126,20 @@ export default function AddEmployeePage() {
                                         value={values.emailName} />
                                 </Form.Field>
 
+                                <p className="label__input">Email</p>
+                                <p className="fail-p">{errors.email && touched.email && errors.email}</p>
                                 <Form.Field>
                                     <input
                                         name="email"
                                         type="email"
-                                        placeholder='Email'
+                                        placeholder='@imanshoppe.com'
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         value={values.email} />
                                 </Form.Field>
 
+                                <p className="label__input">Designation</p>
+                                <p className="fail-p">{errors.position && touched.position && errors.position}</p>
                                 <Form.Field>
                                     <input
                                         name="position"
@@ -126,10 +149,12 @@ export default function AddEmployeePage() {
                                         value={values.position} />
                                 </Form.Field>
 
+                                <p className="label__input">Phone Number</p>
+                                <p className="fail-p">{errors.phone && touched.phone && errors.phone}</p>
                                 <Form.Field>
                                     <input
                                         name="phone"
-                                        placeholder='Phone Number'
+                                        placeholder='01x-xxxxxxx'
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         value={values.phone} />

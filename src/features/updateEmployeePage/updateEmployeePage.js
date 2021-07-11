@@ -11,6 +11,8 @@ import { Formik } from 'formik';
 import { Button, Form } from 'semantic-ui-react';
 import { useHistory } from 'react-router-dom';
 
+import { formSchema } from '../addEmployeePage/addEmployeePage';
+
 export default function UpdateEmployeePage({ match }) {
 
     const dispatch = useDispatch();
@@ -27,6 +29,11 @@ export default function UpdateEmployeePage({ match }) {
         };
 
         const decoded = decodeToken(token);
+        if (decoded.exp < (Date.now() / 1000)) {
+            window.localStorage.removeItem('token');
+            window.location.href = '/admin/login'
+        }
+
         setId(decoded._id);
         setEmail(decoded.email);
         setUserId(decoded.userId);
@@ -43,9 +50,9 @@ export default function UpdateEmployeePage({ match }) {
     const { errorMessage } = useSelector(state => state.user);
 
     var content;
-    if (!user.email | status==='loading') {
+    if (!user.email | status === 'loading') {
         content = <LoadingPage />
-    } else  {
+    } else {
         content = (
             <div>
                 <AdminHeader adminInfo={adminInfo} id={id} email={email} userId={userId} />
@@ -73,6 +80,7 @@ export default function UpdateEmployeePage({ match }) {
                             position: `${user.position}`,
                             phone: `${user.phone}`
                         }}
+                        validationSchema={formSchema}
                         onSubmit={(values) => {
                             dispatch(userAction.updateUser({
                                 id: user._id,
@@ -95,6 +103,8 @@ export default function UpdateEmployeePage({ match }) {
                             /* and other goodies */
                         }) => (
                             <Form>
+                                <p className="label__input">Full Name</p>
+                                <p className="fail-p">{errors.name && touched.name && errors.name}</p>
                                 <Form.Field>
                                     <input
                                         name="name"
@@ -104,6 +114,8 @@ export default function UpdateEmployeePage({ match }) {
                                         value={values.name} />
                                 </Form.Field>
 
+                                <p className="label__input">Short Name</p>
+                                <p className="fail-p">{errors.emailName && touched.emailName && errors.emailName}</p>
                                 <Form.Field>
                                     <input
                                         name="emailName"
@@ -113,16 +125,20 @@ export default function UpdateEmployeePage({ match }) {
                                         value={values.emailName} />
                                 </Form.Field>
 
+                                <p className="label__input">Email</p>
+                                <p className="fail-p">{errors.email && touched.email && errors.email}</p>
                                 <Form.Field>
                                     <input
                                         name="email"
                                         type="email"
-                                        placeholder='Email'
+                                        placeholder='@imanshoppe.com'
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         value={values.email} />
                                 </Form.Field>
 
+                                <p className="label__input">Designation</p>
+                                <p className="fail-p">{errors.position && touched.position && errors.position}</p>
                                 <Form.Field>
                                     <input
                                         name="position"
@@ -132,10 +148,12 @@ export default function UpdateEmployeePage({ match }) {
                                         value={values.position} />
                                 </Form.Field>
 
+                                <p className="label__input">Phone Number</p>
+                                <p className="fail-p">{errors.phone && touched.phone && errors.phone}</p>
                                 <Form.Field>
                                     <input
                                         name="phone"
-                                        placeholder='Phone Number'
+                                        placeholder='01x-xxxxxxx'
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         value={values.phone} />

@@ -3,7 +3,7 @@ import './searchPage.css';
 
 import { useHistory } from 'react-router-dom';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 import * as userAction from '../../redux/actions/userAction';
@@ -32,7 +32,14 @@ export default function SearchPage(props) {
 
     const handleTextChange = (e) => {
         setSearchItem(e.target.value);
-    }
+    };
+
+    useEffect(() => {
+        const token = window.localStorage.getItem('token');
+        if (token) {
+            window.location.href='/admin/dashboard'
+        }
+    });
 
     return (
         <div className="searchPage">

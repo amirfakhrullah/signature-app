@@ -9,9 +9,11 @@ import AdminLoginPage from './features/adminLoginPage/adminLoginPage';
 import AdminDashboard from './features/adminDashboard/adminDashboard';
 import AddEmployeePage from './features/addEmployeePage/addEmployeePage';
 import UpdateEmployeePage from './features/updateEmployeePage/updateEmployeePage';
+import DeleteEmployeePage from './features/deleteEmployeePage/deleteEmployeePage';
 
 
 export default function App() {
+
   return (
     <Router>
       <Switch>
@@ -34,6 +36,7 @@ export default function App() {
           <AddEmployeePage />
         </Route>
         <Route path={"/admin/update-user/:id"} component={UpdateEmployeePage} />
+        <Route path={"/admin/delete-user/:id"} component={DeleteEmployeePage} />
       </Switch>
     </Router>
   )

@@ -63,6 +63,19 @@
     color: #D8000C
 }
 
+.fail-p {
+    color: #D8000C;
+    margin-left: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.label__input {
+    margin-left: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
 @media only screen and (max-width: 1200px) {
     .form-container input {
         width: 75vw;

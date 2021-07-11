@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './adminLoginPage.css';
 
 import { useHistory } from 'react-router-dom';
@@ -49,6 +49,13 @@ export default function AdminLoginPage() {
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
     }
+
+    useEffect(() => {
+        const token = window.localStorage.getItem('token');
+        if (token) {
+            window.location.href='/admin/dashboard'
+        }
+    });
 
     const { errorMessage } = useSelector(state => state.auth);
     const { loading } = useSelector(state => state.auth);

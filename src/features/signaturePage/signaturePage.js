@@ -102,7 +102,7 @@ export default function SignaturePage() {
             </div>
             <div className="copy-button">
                 <p>Click to copy signature =&gt;</p>
-                <div className="copy-icon" onClick={copyDivToClipboard}>
+                <div className="copy-icon" onClick={copyDivToClipboard} title="copy signature">
                     <FileCopyIcon style={{ color: 'white' }} className="copy-icon-svg" />
                 </div>
             </div>

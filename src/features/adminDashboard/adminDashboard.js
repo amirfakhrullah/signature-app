@@ -7,6 +7,7 @@ import AdminHeader from '../adminHeader/adminHeader';
 import { useDispatch, useSelector } from 'react-redux';
 import * as userAction from '../../redux/actions/userAction';
 
+
 import { Input } from '@material-ui/core';
 
 import { Button } from 'semantic-ui-react';
@@ -59,11 +60,17 @@ export default function AdminDashboard() {
         };
 
         const decoded = decodeToken(token);
+        if (decoded.exp < (Date.now()/1000)) {
+            window.localStorage.removeItem('token');
+            window.location.href='/admin/login'
+        }
+
         setId(decoded._id);
         setEmail(decoded.email);
         setUserId(decoded.userId);
         dispatch(userAction.fetchAllUsers());
     }, [dispatch]);
+
 
     const { allUsers } = useSelector(state => state.user);
     const { status } = useSelector(state => state.user);
@@ -83,7 +90,7 @@ export default function AdminDashboard() {
                 <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                     <Button className="logout-btn"
                         style={{ border: '2px solid #F90084', margin: '20px', display: 'flex', alignItems: 'center' }}
-                        onClick={() => window.location.href='/admin/create-user'}
+                        onClick={() => window.location.href = '/admin/create-user'}
                     >
                         <AddIcon style={{ fontSize: '20px' }} />
                         Add Employee
@@ -110,8 +117,8 @@ export default function AdminDashboard() {
                                     <td className="position">{user.position}</td>
                                     <td className="email">{user.email}</td>
                                     <td className="phone">{user.phone}</td>
-                                    <td><button className="btn-table" onClick={() => window.location.href=`/admin/update-user/${user._id}`}>Edit</button></td>
-                                    <td><button className="btn-table" onClick={() => window.location.href=`/admin/delete-user/${user._id}`}>Delete</button></td>
+                                    <td><button className="btn-table" onClick={() => window.location.href = `/admin/update-user/${user._id}`}>Edit</button></td>
+                                    <td><button className="btn-table" onClick={() => window.location.href = `/admin/delete-user/${user._id}`}>Delete</button></td>
                                 </tr>
                             ))
                         }
