@@ -66,7 +66,12 @@ export const fetchUserById = (id) => {
             type: LOADING
         });
 
-        const result = await fetch(`${URL}/api/users/${id}`, initialOptions)
+        const result = await fetch(`${URL}/api/users/${id}`, {
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
             .then(response => {
                 if (response.ok) {
                     return response.json();
@@ -81,14 +86,14 @@ export const fetchUserById = (id) => {
                 return jsonResponse;
             })
 
-        if (!result[0]) {
+        if (!result) {
             dispatch({
                 type: FAIL
             });
         } else {
             dispatch({
                 type: FETCH_USER_BY_ID,
-                payload: result[0]
+                payload: result
             });
         }
     };
@@ -153,6 +158,7 @@ export const createUser = (data) => {
 
         });
         const resultJson = await result.json();
+        console.log(resultJson)
 
         if (resultJson.success) {
             dispatch({
@@ -165,6 +171,8 @@ export const createUser = (data) => {
                 payload: resultJson
             });
         }
+
+        return resultJson
     };
 };
 

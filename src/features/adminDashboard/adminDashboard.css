@@ -46,6 +46,10 @@ td, th {
     font-size: 14px;
 }
 
+th {
+    color: #080A52;
+}
+
 tr:nth-child(even) {
     background-color: #dddddd;
 }

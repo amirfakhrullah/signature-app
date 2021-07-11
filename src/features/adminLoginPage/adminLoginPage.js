@@ -18,24 +18,6 @@ export default function AdminLoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleKeyPress = (e) => {
-        if (e.key === "Enter") {
-            e.preventDefault();
-            dispatch(authAction.loginUser({ email, password }))
-                .then(result => {
-                    if (result.success) {
-                        try {
-                            window.localStorage.setItem('token', result.token);
-                            history.push('/admin/dashboard');
-                        } catch (err) {
-                            console.log(err);
-                        }
-                    } else {
-                        history.push('/admin/login');
-                    }
-                })
-        };
-    };
 
     const handleClick = () => {
         dispatch(authAction.loginUser({ email, password }))
@@ -52,6 +34,13 @@ export default function AdminLoginPage() {
                 }
             })
     }
+
+    const handleKeyPress = (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            handleClick()
+        };
+    };
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);

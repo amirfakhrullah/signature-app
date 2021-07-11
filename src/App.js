@@ -7,6 +7,8 @@ import ResultPage from './features/resultPage/resultPage';
 import SignaturePage from './features/signaturePage/signaturePage';
 import AdminLoginPage from './features/adminLoginPage/adminLoginPage';
 import AdminDashboard from './features/adminDashboard/adminDashboard';
+import AddEmployeePage from './features/addEmployeePage/addEmployeePage';
+import UpdateEmployeePage from './features/updateEmployeePage/updateEmployeePage';
 
 
 export default function App() {
@@ -28,6 +30,10 @@ export default function App() {
         <Route path={'/admin/dashboard'}>
           <AdminDashboard />
         </Route>
+        <Route path={'/admin/create-user'}>
+          <AddEmployeePage />
+        </Route>
+        <Route path={"/admin/update-user/:id"} component={UpdateEmployeePage} />
       </Switch>
     </Router>
   )

@@ -1,0 +1,74 @@
+.form-container {
+    margin: 10vh auto;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-container input {
+    width: 25vw;
+    padding: 10px;
+    margin: 5px;
+}
+
+.create__btn, .cancel__btn {
+    padding: 10px 15px;
+    margin: 10px 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.create__btn {
+    background-color: #F90084;
+    border: 2px solid #F90084;
+    color: white;
+}
+
+.create__btn:hover {
+    background-color: #a00055;
+}
+
+.cancel__btn {
+    background-color: white;
+    border: 2px solid #080A52;
+    color: #080A52;
+}
+
+.cancel__btn:hover {
+    background-color: #080A52;
+    color: white;
+}
+
+.success__message, .fail__message {
+    padding: 10px 20px;
+    margin: 10px 20px;
+    width: 24vw;
+}
+
+.success__message {
+    background-color: #DFF2BF;
+}
+
+.success__message p {
+    color: #4F8A10
+}
+
+.fail__message {
+    background-color: #FFD2D2;
+}
+
+.fail__message p {
+    color: #D8000C
+}
+
+@media only screen and (max-width: 1200px) {
+    .form-container input {
+        width: 75vw;
+    }
+    .success__message, 
+    .fail__message {
+        width: 73vw;
+    }
+}

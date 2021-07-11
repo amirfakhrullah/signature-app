@@ -12,8 +12,10 @@ import {
 const initialState = {
     allUsers: [],
     userData: {},
+    userEditData: {},
     status: 'idle',
-    message: ''
+    message: '',
+    errorMessage: ''
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -24,37 +26,37 @@ export default function (state = initialState, action) {
         case FETCH_ALL_USERS:
             return {
                 ...state,
-                allUsers: action.payload,
+                allUsers: action.payload && action.payload,
                 status: 'succeed'
             }
         case FETCH_USER_BY_ID:
             return {
                 ...state,
-                userData: action.payload,
+                userEditData:  action.payload,
                 status: 'succeed'
             }
         case FETCH_USER_BY_EMAIL:
             return {
                 ...state,
-                userData: action.payload,
+                userData:  action.payload,
                 status: 'succeed'
             }
         case CREATE_USER:
             return {
                 ...state,
-                message: action.payload.message,
+                message: action.payload && action.payload.message,
                 status: 'succeed'
             }
         case UPDATE_USER:
             return {
                 ...state,
-                message: action.payload.message,
+                message: action.payload && action.payload.message,
                 status: 'succeed'
             }
         case DELETE_USER:
             return {
                 ...state,
-                message: action.payload.message,
+                message: action.payload && action.payload.message,
                 status: 'succeed'
             }
         case LOADING:
@@ -65,7 +67,8 @@ export default function (state = initialState, action) {
         case FAIL:
             return {
                 ...state,
-                status: 'failed'
+                status: 'failed',
+                errorMessage: action.payload && action.payload.message
             }
     }
     return state;

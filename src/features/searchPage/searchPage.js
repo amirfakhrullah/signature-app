@@ -17,19 +17,18 @@ export default function SearchPage(props) {
 
     const [searchItem, setSearchItem] = useState('');
 
-    const handleKeyPress = (e) => {
-        if (e.key === "Enter") {
-            e.preventDefault();
-            dispatch(userAction.fetchUserByEmail(searchItem))
-            setSearchItem('');
-            history.push('/result');
-        };
-    };
     const handleClick = () => {
         dispatch(userAction.fetchUserByEmail(searchItem))
         setSearchItem('');
         history.push('/result');
     }
+
+    const handleKeyPress = (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            handleClick();
+        };
+    };
 
     const handleTextChange = (e) => {
         setSearchItem(e.target.value);
