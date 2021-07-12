@@ -50,11 +50,12 @@ export default function UpdatePasswordPage() {
 
     const adminInfo = useSelector(state => state.user.userData);
     const { status } = useSelector(state => state.user);
+    const { loading } = useSelector(state => state.auth);
     const { message } = useSelector(state => state.auth);
     const { errorMessage } = useSelector(state => state.auth);
 
     var content;
-    if (status === 'loading'| message | errorMessage) {
+    if ((status === 'loading' | status === 'idle') && (loading === 'loading' | loading === 'idle')) {
         content = <LoadingPage />
     } else {
         content = (
@@ -89,6 +90,7 @@ export default function UpdatePasswordPage() {
                                 password: values.password,
                                 newPassword: values.newPassword
                             }))
+                            dispatch(userAction.fetchUserByEmail(email))
                         }}
                     >
                         {({

@@ -45,18 +45,21 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 message: action.payload && action.payload.message,
+                errorMessage: '',
                 status: 'succeed'
             }
         case UPDATE_USER:
             return {
                 ...state,
                 message: action.payload && action.payload.message,
+                errorMessage: '',
                 status: 'succeed'
             }
         case DELETE_USER:
             return {
                 ...state,
                 message: action.payload && action.payload.message,
+                errorMessage: '',
                 status: 'succeed'
             }
         case LOADING:
@@ -68,7 +71,8 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 status: 'failed',
-                errorMessage: action.payload && action.payload.message
+                errorMessage: action.payload && action.payload.message,
+                message: ''
             }
     }
     return state;

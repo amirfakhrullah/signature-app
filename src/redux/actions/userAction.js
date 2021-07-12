@@ -129,6 +129,7 @@ export const fetchUserByEmail = (email) => {
                 payload: result[0]
             });
         }
+        return result;
     };
 };
 
@@ -246,5 +247,6 @@ export const deleteUser = id => {
                 payload: resultJson
             });
         }
+        return resultJson;
     };
 };

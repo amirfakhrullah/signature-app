@@ -5,18 +5,17 @@ import { decodeToken } from '../adminDashboard/adminDashboard';
 
 import { useDispatch, useSelector } from 'react-redux';
 import * as userAction from '../../redux/actions/userAction';
+import * as authAction from '../../redux/actions/authAction';
 import LoadingPage from '../loadingPage/loadingPage';
 
 import { Formik } from 'formik';
 import { Button, Form } from 'semantic-ui-react';
-import { useHistory } from 'react-router-dom';
 
 import { formSchema } from '../addEmployeePage/addEmployeePage';
 
 export default function UpdateEmployeePage({ match }) {
 
     const dispatch = useDispatch();
-    const history = useHistory();
 
     const [id, setId] = useState('');
     const [email, setEmail] = useState('');
@@ -37,17 +36,19 @@ export default function UpdateEmployeePage({ match }) {
         setId(decoded._id);
         setEmail(decoded.email);
         setUserId(decoded.userId);
-        history.push(`/admin/update-user/${match.params.id}`)
         dispatch(userAction.fetchUserByEmail(email))
+        dispatch(authAction.fetchAllAdmins());
         dispatch(userAction.fetchUserById(match.params.id))
-        history.push(`/admin/update-user/${match.params.id}`)
-    }, [dispatch, email, match.params.id, history]);
+    }, [dispatch, email, match.params.id]);
 
     const adminInfo = useSelector(state => state.user.userData);
+    const { allAdmins } = useSelector(state => state.auth);
     const { status } = useSelector(state => state.user);
     const user = useSelector(state => state.user.userEditData);
     const { message } = useSelector(state => state.user);
     const { errorMessage } = useSelector(state => state.user);
+
+    const isAdmin = allAdmins.find(admin => admin.userId === user._id);
 
     var content;
     if (!user.email | status === 'loading') {
@@ -103,6 +104,21 @@ export default function UpdateEmployeePage({ match }) {
                             /* and other goodies */
                         }) => (
                             <Form>
+                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+                                    {
+                                        isAdmin ? (
+                                            <Button
+                                                className="cancel__btn"
+                                                style={{padding: '5px 10px'}}
+                                            >Remove Admin</Button>
+                                        ) : (
+                                            <Button
+                                                className="cancel__btn"
+                                                style={{padding: '5px 10px'}}
+                                            >Add Admin</Button>
+                                        )
+                                    }
+                                </div>
                                 <p className="label__input">Full Name</p>
                                 <p className="fail-p">{errors.name && touched.name && errors.name}</p>
                                 <Form.Field>

@@ -4,8 +4,11 @@ import './adminDashboard.css';
 import LoadingPage from '../loadingPage/loadingPage';
 import AdminHeader from '../adminHeader/adminHeader';
 
+import PersonIcon from '@material-ui/icons/Person';
+
 import { useDispatch, useSelector } from 'react-redux';
 import * as userAction from '../../redux/actions/userAction';
+import * as authAction from '../../redux/actions/authAction';
 
 
 import { Input } from '@material-ui/core';
@@ -69,17 +72,20 @@ export default function AdminDashboard() {
         setEmail(decoded.email);
         setUserId(decoded.userId);
         dispatch(userAction.fetchAllUsers());
+        dispatch(authAction.fetchAllAdmins());
     }, [dispatch]);
 
 
     const { allUsers } = useSelector(state => state.user);
     const { status } = useSelector(state => state.user);
+    const { allAdmins } = useSelector(state => state.auth);
+    const { loading } = useSelector(state => state.auth);
     const adminInfo = allUsers.filter(user => user._id === userId);
 
     var content;
-    if (status === 'loading' || status === 'idle') {
+    if (status === 'loading' | loading === 'loading') {
         content = <LoadingPage />
-    } else if (status === 'succeed') {
+    } else if (status === 'succeed' && loading === 'success') {
         content = (
             <div>
                 <AdminHeader adminInfo={adminInfo[0]} id={id} userId={userId} email={email} />
@@ -97,7 +103,7 @@ export default function AdminDashboard() {
                     </Button>
                 </div>
                 <table>
-                    <thead>
+                    <thead style={{position: 'sticky', top: '57px', backgroundColor: 'white'}}>
                         <tr>
                             <th className="fullname">Full Name</th>
                             <th className="emailName">Short Name</th>
@@ -113,9 +119,9 @@ export default function AdminDashboard() {
                             allUsers && allUsers.map(user => (
                                 <tr key={user._id} className="myRow">
                                     <td className="fullname">{user.name}</td>
-                                    <td className="emailName">{user.emailName}</td>
+                                    <td className="emailName">{user.emailName} {allAdmins.find(admin => admin.userId === user._id) && <PersonIcon style={{ fontSize: '15px', position: 'relative', top: '2px' }} />}</td>
                                     <td className="position">{user.position}</td>
-                                    <td className="email">{user.email}</td>
+                                    <td className="email">{user.email} {allAdmins.find(admin => admin.userId === user._id) && <PersonIcon text="Admin" style={{ fontSize: '15px', position: 'relative', top: '2px' }} />}</td>
                                     <td className="phone">{user.phone}</td>
                                     <td><button className="btn-table" onClick={() => window.location.href = `/admin/update-user/${user._id}`}>Edit</button></td>
                                     <td><button className="btn-table" onClick={() => window.location.href = `/admin/delete-user/${user._id}`}>Delete</button></td>

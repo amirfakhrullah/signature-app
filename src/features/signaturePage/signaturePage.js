@@ -52,12 +52,12 @@ export default function SignaturePage() {
 
             <div className="mid-container">
                 <img src="https://imanmedia.com.my/wp-content/uploads/2021/06/email-con-removebg-preview.png" alt="email-icon" className="icon-material-ui1" />
-                <p className="px11" style={{color: '#080A52 !important', textDecoration: 'none !important', pointerEvents: 'none'}}>{userData.email}</p>
+                <p className="px11" style={{ color: '#080A52 !important', textDecoration: 'none !important', pointerEvents: 'none' }}>{userData.email}</p>
             </div>
 
             <div className="mid-container">
                 <img src="https://imanmedia.com.my/wp-content/uploads/2021/06/web-con-removebg-preview.png" alt="email-icon" className="icon-material-ui1" />
-                <p className="px11" style={{color: '#080A52 !important', textDecoration: 'none !important', pointerEvents: 'none'}}>imanmedia.com.my</p>
+                <p className="px11" style={{ color: '#080A52 !important', textDecoration: 'none !important', pointerEvents: 'none' }}>imanmedia.com.my</p>
             </div>
 
             <div className="mid-container">
@@ -93,10 +93,10 @@ export default function SignaturePage() {
     return (
         <div className='signaturePage'>
             <h2>Here's Your Email Signature:</h2>
-            <p style={{paddingBottom: '20px', marginLeft: '10px'}}>Guides to set email signature on Gmail: <a href="https://docs.google.com/document/d/1MZEioYLH0vc3292zlU-V2QWyYVdPrul0Io7l8XTQ-Hs/edit?usp=sharing" 
-                target="_blank" 
+            <p style={{ paddingBottom: '20px', marginLeft: '10px' }}>Guides to set email signature on Gmail: <a href="https://docs.google.com/document/d/1MZEioYLH0vc3292zlU-V2QWyYVdPrul0Io7l8XTQ-Hs/edit?usp=sharing"
+                target="_blank"
                 rel="noreferrer"
-                style={{fontWeight: 'bold', textDecoration: 'underline'}} >Click here</a></p>
+                style={{ fontWeight: 'bold', textDecoration: 'underline' }} >Click here</a></p>
             <div className="signature-container">
                 {userData.name && <React.Fragment>{sign}</React.Fragment>}
             </div>

@@ -25,8 +25,12 @@ export default function AdminHeader(props) {
     }
 
     const getSignature = () => {
-        dispatch(userAction.fetchUserByEmail(props.email));
-        history.push(`/result`);
+        dispatch(userAction.fetchUserByEmail(props.email))
+            .then(result => {
+                if (result[0]) {
+                    history.push(`/user/${props.userId}`);
+                }
+            })
     }
 
     return (

@@ -38,6 +38,14 @@ export default function DeleteEmployeePage({ match }) {
 
     const handleDelete = () => {
         dispatch(userAction.deleteUser(match.params.id))
+            .then(result => {
+                if (result.success) {
+                    if (userId === match.params.id) {
+                        window.localStorage.removeItem('token');
+                        window.location.href="/admin/login";
+                    }
+                }
+            })
     }
 
     const adminInfo = useSelector(state => state.user.userData);
@@ -47,7 +55,7 @@ export default function DeleteEmployeePage({ match }) {
     const { errorMessage } = useSelector(state => state.user);
 
     var content;
-    if (status === 'loading'| !userInfo.emailName) {
+    if (status === 'loading' | !userInfo.emailName) {
         content = <LoadingPage />
     } else {
         content = (
@@ -68,8 +76,14 @@ export default function DeleteEmployeePage({ match }) {
                             </div>
                         )
                     }
-                    <p className="label__input" style={{ fontSize: '16px', margin: '20px 10px', color: '#080A52' }}>Are you sure you want to delete {userInfo.emailName}'s info?</p>
-                    <p className="label__input">There will be no backup once it is deleted</p>
+                    {
+                        !message && (
+                            <>
+                                <p className="label__input" style={{ fontSize: '16px', margin: '20px 10px', color: '#080A52' }}>Are you sure you want to delete {userInfo.emailName}'s info?</p>
+                                <p className="label__input">There will be no backup once it is deleted</p>
+                            </>
+                        )
+                    }
 
 
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
