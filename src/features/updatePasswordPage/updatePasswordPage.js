@@ -11,7 +11,6 @@ import LoadingPage from '../loadingPage/loadingPage';
 import { Formik } from 'formik';
 import { Button, Form } from 'semantic-ui-react';
 import * as yup from 'yup';
-import { useHistory } from 'react-router-dom';
 
 const formSchema = yup.object({
     password: yup.string().required('Current Password is required'),
@@ -26,7 +25,6 @@ const formSchema = yup.object({
 export default function UpdatePasswordPage() {
 
     const dispatch = useDispatch();
-    const history = useHistory();
 
     const [id, setId] = useState('');
     const [email, setEmail] = useState('');

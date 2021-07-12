@@ -72,7 +72,10 @@ export const loginUser = data => {
         if (resultJson.success) {
             dispatch({
                 type: LOGIN_ADMIN_SUCCESS,
-                payload: resultJson
+                payload: {
+                    success: resultJson.success,
+                    message: resultJson.message
+                }
             })
         } else {
             dispatch({
