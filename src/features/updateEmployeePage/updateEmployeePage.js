@@ -10,8 +10,14 @@ import LoadingPage from '../loadingPage/loadingPage';
 
 import { Formik } from 'formik';
 import { Button, Form } from 'semantic-ui-react';
+import * as yup from 'yup';
 
-import { formSchema } from '../addEmployeePage/addEmployeePage';
+export const formSchema = yup.object({
+    name: yup.string().required('Name is required'),
+    emailName: yup.string().required('Short Name is required'),
+    position: yup.string().required('Designation is required'),
+    phone: yup.string().required('Phone Number is required')
+});
 
 export default function UpdateEmployeePage({ match }) {
 
@@ -77,7 +83,6 @@ export default function UpdateEmployeePage({ match }) {
                         initialValues={{
                             name: `${user.name}`,
                             emailName: `${user.emailName}`,
-                            email: `${user.email}`,
                             position: `${user.position}`,
                             phone: `${user.phone}`
                         }}
@@ -87,7 +92,7 @@ export default function UpdateEmployeePage({ match }) {
                                 id: user._id,
                                 name: values.name,
                                 emailName: values.emailName,
-                                email: values.email,
+                                email: user.email,
                                 position: values.position,
                                 phone: values.phone
                             }))
@@ -110,15 +115,27 @@ export default function UpdateEmployeePage({ match }) {
                                             <Button
                                                 className="cancel__btn"
                                                 style={{padding: '5px 10px'}}
+                                                onClick={() => window.location.href=`/admin/remove-admin/${isAdmin._id}`}
                                             >Remove Admin</Button>
                                         ) : (
                                             <Button
                                                 className="cancel__btn"
                                                 style={{padding: '5px 10px'}}
+                                                onClick={() => window.location.href=`/admin/create-admin/${user._id}`}
                                             >Add Admin</Button>
                                         )
                                     }
                                 </div>
+                                <p className="label__input">Email (Fixed)</p>
+                                <Form.Field>
+                                    <input
+                                        name="email"
+                                        type="email"
+                                        placeholder='@imanshoppe.com'
+                                        value={user.email}
+                                        readOnly />
+                                </Form.Field>
+
                                 <p className="label__input">Full Name</p>
                                 <p className="fail-p">{errors.name && touched.name && errors.name}</p>
                                 <Form.Field>
@@ -139,18 +156,6 @@ export default function UpdateEmployeePage({ match }) {
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         value={values.emailName} />
-                                </Form.Field>
-
-                                <p className="label__input">Email</p>
-                                <p className="fail-p">{errors.email && touched.email && errors.email}</p>
-                                <Form.Field>
-                                    <input
-                                        name="email"
-                                        type="email"
-                                        placeholder='@imanshoppe.com'
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        value={values.email} />
                                 </Form.Field>
 
                                 <p className="label__input">Designation</p>

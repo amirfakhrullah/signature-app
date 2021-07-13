@@ -62,7 +62,7 @@ export const fetchAdminById = (id) => {
             type: LOADING
         });
 
-        const result = await fetch(`${URL}/api/admins/${id}`, {
+        const result = await fetch(`${URL}/api/auth/admins/${id}`, {
             headers: {
                 'auth-token': window.localStorage.getItem('token'),
                 Accept: 'application/json',
@@ -80,7 +80,7 @@ export const fetchAdminById = (id) => {
                     });
                     return {};
                 }
-                return jsonResponse;
+                return jsonResponse
             })
 
         if (!result) {
@@ -119,7 +119,7 @@ export const registerAdmin = data => {
             })
         });
         const resultJson = await result.json();
-        
+
         if (resultJson.success) {
             dispatch({
                 type: REGISTER_ADMIN_SUCCESS,
@@ -243,5 +243,6 @@ export const deleteAdmin = id => {
                 payload: resultJson
             });
         }
+        return resultJson;
     };
 };

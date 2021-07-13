@@ -11,6 +11,8 @@ import AddEmployeePage from './features/addEmployeePage/addEmployeePage';
 import UpdateEmployeePage from './features/updateEmployeePage/updateEmployeePage';
 import DeleteEmployeePage from './features/deleteEmployeePage/deleteEmployeePage';
 import UpdatePasswordPage from './features/updatePasswordPage/updatePasswordPage';
+import CreateAdminPage from './features/createAdminPage/createAdminPage';
+import RemoveAdminPage from './features/removeAdminPage/removeAdminPage';
 
 
 export default function App() {
@@ -41,6 +43,8 @@ export default function App() {
         <Route path={'/admin/update-password'}>
           <UpdatePasswordPage />
         </Route>
+        <Route path={"/admin/create-admin/:id"} component={CreateAdminPage} />
+        <Route path={"/admin/remove-admin/:id"} component={RemoveAdminPage} />
       </Switch>
     </Router>
   )

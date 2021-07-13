@@ -31,7 +31,9 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 user: action.payload,
-                loading: 'success'
+                loading: 'success',
+                message: 'Admin registered succesfully',
+                errorMessage: ''
             };
         case REGISTER_ADMIN_FAIL:
             return {
@@ -97,7 +99,7 @@ export default function (state = initialState, action) {
                 errors: true,
                 loading: 'fail',
                 message: '',
-                errorMessage: action.payload.message
+                errorMessage: 'No Admin Found'
             }
         case DELETE_ADMIN_SUCCESS:
             return {

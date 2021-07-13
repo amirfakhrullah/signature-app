@@ -104,6 +104,18 @@ export default function AddEmployeePage() {
                             /* and other goodies */
                         }) => (
                             <Form>
+                                <p className="label__input">Email</p>
+                                <p className="fail-p">{errors.email && touched.email && errors.email}</p>
+                                <Form.Field>
+                                    <input
+                                        name="email"
+                                        type="email"
+                                        placeholder='@imanshoppe.com'
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.email} />
+                                </Form.Field>
+                                
                                 <p className="label__input">Full Name</p>
                                 <p className="fail-p">{errors.name && touched.name && errors.name}</p>
                                 <Form.Field>
@@ -124,18 +136,6 @@ export default function AddEmployeePage() {
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         value={values.emailName} />
-                                </Form.Field>
-
-                                <p className="label__input">Email</p>
-                                <p className="fail-p">{errors.email && touched.email && errors.email}</p>
-                                <Form.Field>
-                                    <input
-                                        name="email"
-                                        type="email"
-                                        placeholder='@imanshoppe.com'
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        value={values.email} />
                                 </Form.Field>
 
                                 <p className="label__input">Designation</p>
