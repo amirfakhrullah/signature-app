@@ -53,9 +53,6 @@
       "last 1 safari version"
     ]
   },
-  "engines": {
-    "node": "14.15.1"
-  },
   "optionalDependencies": {
     "fsevents": "^2.3.2"
   }
