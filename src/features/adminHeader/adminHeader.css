@@ -1,0 +1,34 @@
+.header-admin {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #080A52;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    top: 0px;
+}
+
+.logout-btn {
+    background-color: #F90084;
+    border: none;
+    padding: 5px 10px;
+    font-size: 15px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 1vw;
+}
+
+.logout-btn:hover {
+    background-color: #a00055;
+}
+
+.dropdown-menu {
+    padding: 5px 10px;
+    color: white;
+}
+
+.dropdown-menu:hover {
+    background-color: #a00055;
+}

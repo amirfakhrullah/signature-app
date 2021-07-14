@@ -70,7 +70,8 @@ export default function CreateAdminPage({ match }) {
                 <AdminHeader adminInfo={adminInfo} id={id} email={email} userId={userId} />
                 <div className="form-container">
                     <h2 style={{ color: '#080A52' }}>Set Password for New Admin:</h2>
-                    <p style={{ margin: '10px 0px 20px 0px' }}>{user.email}</p>
+                    <p style={{ margin: '10px 2px 5px 2px' }}>{user.email}</p>
+                    <p style={{ fontSize: '14px', margin: '10px 2vw 20px 2vw', textAlign: 'center'}}>You can type-in the password or use the given password.<br />The password will be sent to the new admin via email.</p>
                     {
                         message && (
                             <div className="success__message">

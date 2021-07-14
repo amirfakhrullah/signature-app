@@ -52,7 +52,7 @@ export default function AdminHeader(props) {
                                 <ArrowDropDownIcon style={{ color: 'white', textAlign: 'center', fontSize: '25px' }} />
                             </Dropdown.Toggle>
 
-                            <Dropdown.Menu style={{ backgroundColor: '#F90084', zIndex: '45', display: 'flex', flexDirection: 'column' }}>
+                            <Dropdown.Menu style={{ backgroundColor: '#F90084', display: 'flex', flexDirection: 'column' }}>
                                 <Dropdown.Item className="dropdown-menu" onClick={() => getSignature()}>Get Signature</Dropdown.Item>
                                 <Dropdown.Item className="dropdown-menu" onClick={() => window.location.href=`/admin/update-user/${props.userId}`}>Update Info</Dropdown.Item>
                                 <Dropdown.Item className="dropdown-menu" onClick={() => window.location.href=`/admin/update-password`}>Update Password</Dropdown.Item>

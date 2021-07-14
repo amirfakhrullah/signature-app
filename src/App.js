@@ -13,6 +13,7 @@ import DeleteEmployeePage from './features/deleteEmployeePage/deleteEmployeePage
 import UpdatePasswordPage from './features/updatePasswordPage/updatePasswordPage';
 import CreateAdminPage from './features/createAdminPage/createAdminPage';
 import RemoveAdminPage from './features/removeAdminPage/removeAdminPage';
+import ResetPasswordPage from './features/resetPasswordPage/resetPasswordPage';
 
 
 export default function App() {
@@ -45,6 +46,9 @@ export default function App() {
         </Route>
         <Route path={"/admin/create-admin/:id"} component={CreateAdminPage} />
         <Route path={"/admin/remove-admin/:id"} component={RemoveAdminPage} />
+        <Route path={'/reset'}>
+          <ResetPasswordPage />
+        </Route>
       </Switch>
     </Router>
   )

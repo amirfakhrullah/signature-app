@@ -89,7 +89,7 @@ export default function AdminDashboard() {
         content = (
             <div>
                 <AdminHeader adminInfo={adminInfo[0]} id={id} userId={userId} email={email} />
-                <h1 style={{ color: '#080A52', margin: '20px' }}>Employee Database</h1>
+                <h1 style={{ color: '#080A52', margin: '20px', marginTop: '80px' }}>Employee Database</h1>
                 <div>
                     <Input className="input-material-ui" style={{ color: 'black', width: '95%', margin: '20px 20px 0px 20px' }} type="text" id="myInput" onKeyUp={myFunction} placeholder="Search for name.." title="Type in a name" />
                 </div>
@@ -103,7 +103,7 @@ export default function AdminDashboard() {
                     </Button>
                 </div>
                 <table>
-                    <thead style={{position: 'sticky', top: '57px', backgroundColor: 'white'}}>
+                    <thead style={{position: 'sticky', top: '58px', backgroundColor: 'white', zIndex: '1'}}>
                         <tr>
                             <th className="fullname">Full Name</th>
                             <th className="emailName">Short Name</th>

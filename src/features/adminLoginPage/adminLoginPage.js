@@ -53,7 +53,7 @@ export default function AdminLoginPage() {
     useEffect(() => {
         const token = window.localStorage.getItem('token');
         if (token) {
-            window.location.href='/admin/dashboard'
+            window.location.href = '/admin/dashboard'
         }
     });
 
@@ -95,6 +95,9 @@ export default function AdminLoginPage() {
                                 value={password}
                                 onKeyPress={handleKeyPress} />
                         </Form.Field>
+                        <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                            <p className="return-btn"><span onClick={() => window.location.href='/reset'}>Forgot password?</span></p>
+                        </div>
                         <Button className="button-email" onClick={() => handleClick()}>Login</Button>
                     </Form>
                     <p className="return-btn">Not an admin? <span onClick={() => window.location.href = '/'}>Back to home</span></p>

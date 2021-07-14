@@ -4,6 +4,8 @@ export const LOGIN_ADMIN_SUCCESS = 'LOGIN_ADMIN_SUCCESS';
 export const LOGIN_ADMIN_FAIL = 'LOGIN_ADMIN_FAIL';
 export const UPDATE_PASSWORD_SUCCESS = 'UPDATE_PASSWORD_SUCCESS';
 export const UPDATE_PASSWORD_FAIL = 'UPDATE_PASSWORD_FAIL';
+export const RESET_PASSWORD_SUCCESS = 'RESET_PASSWORD_SUCCESS';
+export const RESET_PASSWORD_FAIL = 'RESET_PASSWORD_FAIL';
 export const GET_ADMINS_SUCCESS = 'GET_ADMINS_SUCCESS';
 export const GET_ADMINS_FAIL = 'GET_ADMINS_FAIL';
 export const GET_ADMIN_BY_ID_SUCCESS = 'GET_ADMIN_BY_ID_SUCCESS';
@@ -197,7 +199,6 @@ export const updatePassword = data => {
             })
         });
         const resultJson = await result.json();
-        console.log(resultJson)
 
         if (resultJson.success) {
             dispatch({
@@ -207,6 +208,41 @@ export const updatePassword = data => {
         } else {
             dispatch({
                 type: UPDATE_PASSWORD_FAIL,
+                payload: resultJson
+            })
+        }
+        return resultJson;
+    };
+};
+
+export const resetPassword = email => {
+
+    return async dispatch => {
+
+        dispatch({
+            type: LOADING,
+        });
+
+        const result = await fetch(`${URL}/api/auth/reset-password/`, {
+            method: 'PUT',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email
+            })
+        });
+        const resultJson = await result.json();
+
+        if (resultJson.success) {
+            dispatch({
+                type: RESET_PASSWORD_SUCCESS,
+                payload: resultJson
+            })
+        } else {
+            dispatch({
+                type: RESET_PASSWORD_FAIL,
                 payload: resultJson
             })
         }

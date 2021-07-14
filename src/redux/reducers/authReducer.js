@@ -5,6 +5,8 @@ import {
     LOGIN_ADMIN_FAIL,
     UPDATE_PASSWORD_SUCCESS,
     UPDATE_PASSWORD_FAIL,
+    RESET_PASSWORD_SUCCESS,
+    RESET_PASSWORD_FAIL,
     GET_ADMINS_SUCCESS,
     GET_ADMINS_FAIL,
     GET_ADMIN_BY_ID_SUCCESS,
@@ -71,6 +73,21 @@ export default function (state = initialState, action) {
                 loading: 'fail',
                 message: '',
                 errorMessage: action.payload.message
+            }
+        case RESET_PASSWORD_SUCCESS:
+            return {
+                ...state,
+                message: action.payload.message,
+                errorMessage: '',
+                loading: 'success'
+            }
+        case RESET_PASSWORD_FAIL:
+            return {
+                ...state,
+                errors: true,
+                loading: 'fail',
+                message: '',
+                errorMessage: action.payload.message 
             }
         case GET_ADMINS_SUCCESS:
             return {
