@@ -63,9 +63,9 @@ export default function AdminDashboard() {
         };
 
         const decoded = decodeToken(token);
-        if (decoded.exp < (Date.now()/1000)) {
+        if (decoded.exp < (Date.now() / 1000)) {
             window.localStorage.removeItem('token');
-            window.location.href='/admin/login'
+            window.location.href = '/admin/login'
         }
 
         setId(decoded._id);
@@ -103,28 +103,28 @@ export default function AdminDashboard() {
                     </Button>
                 </div>
                 <table>
-                    <thead style={{position: 'sticky', top: '58px', backgroundColor: 'white', zIndex: '1'}}>
+                    <thead style={{ position: 'sticky', top: '58px', backgroundColor: 'white', zIndex: '1' }}>
                         <tr>
+                            <th>Edit</th>
+                            <th>Delete</th>
                             <th className="fullname">Full Name</th>
                             <th className="emailName">Short Name</th>
                             <th className="position">Designation</th>
                             <th className="email">Email</th>
                             <th className="phone">Phone Number</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody id="myUl">
                         {
                             allUsers && allUsers.map(user => (
                                 <tr key={user._id} className="myRow">
-                                    <td className="fullname">{user.name}</td>
+                                    <td><button className="btn-table" onClick={() => window.location.href = `/admin/update-user/${user._id}`}>Edit</button></td>
+                                    <td><button className="btn-table" onClick={() => window.location.href = `/admin/delete-user/${user._id}`}>Delete</button></td>
+                                    <td className="fullname">{user.name} {allAdmins.find(admin => admin.userId === user._id) && <PersonIcon text="Admin" style={{ fontSize: '15px', position: 'relative', top: '2px' }} />}</td>
                                     <td className="emailName">{user.emailName} {allAdmins.find(admin => admin.userId === user._id) && <PersonIcon style={{ fontSize: '15px', position: 'relative', top: '2px' }} />}</td>
                                     <td className="position">{user.position}</td>
                                     <td className="email">{user.email} {allAdmins.find(admin => admin.userId === user._id) && <PersonIcon text="Admin" style={{ fontSize: '15px', position: 'relative', top: '2px' }} />}</td>
                                     <td className="phone">{user.phone}</td>
-                                    <td><button className="btn-table" onClick={() => window.location.href = `/admin/update-user/${user._id}`}>Edit</button></td>
-                                    <td><button className="btn-table" onClick={() => window.location.href = `/admin/delete-user/${user._id}`}>Delete</button></td>
                                 </tr>
                             ))
                         }
