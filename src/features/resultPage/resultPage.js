@@ -46,7 +46,7 @@ export default function ResultPage() {
                 </div>
 
                 <div>
-                    <p style={{fontSize: '14px'}}>* If there's a problem with your information,<br /> contact Amir directly at amir@imanshoppe.com</p>
+                    <p style={{fontSize: '14px'}}>* If there's a problem with your information, please refer to <br />either your HOD, HR or anyone in Tech Department</p>
                 </div>
             </div>
         );
