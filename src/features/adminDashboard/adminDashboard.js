@@ -45,7 +45,7 @@ export default function AdminDashboard() {
         ul = document.getElementById("myUl");
         li = ul.getElementsByClassName("myRow");
         for (i = 0; i < li.length; i++) {
-            a = li[i].getElementsByTagName("td")[0];
+            a = li[i].getElementsByTagName("td")[3];
             txtValue = a.textContent || a.innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
                 li[i].style.display = "";
