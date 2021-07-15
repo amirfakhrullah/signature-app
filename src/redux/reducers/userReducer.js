@@ -71,7 +71,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 status: 'failed',
-                errorMessage: action.payload ? action.payload.message : 'Result Not Found',
+                errorMessage: action.payload ? action.payload.message : '',
                 message: ''
             }
     }

@@ -32,3 +32,27 @@
 .dropdown-menu:hover {
     background-color: #a00055;
 }
+
+.documentation {
+    color: white;
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+.documentation:hover {
+    text-decoration: underline;
+}
+
+.menu-docs {
+    display: none;
+}
+
+@media only screen and  (max-width: 500px) {
+    .documentation {
+        display: none
+    }
+
+    .menu-docs {
+        display: block;
+    }
+}
