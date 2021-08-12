@@ -72,7 +72,7 @@ export default function AdminLoginPage() {
                     alt="logoIman"
                 />
                 {
-                    errorMessage && <h2 className="error-message">{errorMessage.message}</h2>
+                    errorMessage && <h2 className="error-message">{errorMessage}</h2>
                 }
                 <div className="searchContainer">
                     <h2 className="typeInEmail">Admin Login</h2>

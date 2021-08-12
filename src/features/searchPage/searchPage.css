@@ -11,7 +11,7 @@
 .searchContainer {
     margin: 0 auto;
     background-color: #080A52;
-    width: 30vw;
+    width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,7 +25,7 @@
 }
 
 .form-email {
-    width: 25vw;
+    width: 400px;
     padding: 10px;
     margin: 10px 0;
     background-color: white;

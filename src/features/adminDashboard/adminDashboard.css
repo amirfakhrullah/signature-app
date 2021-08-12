@@ -29,8 +29,16 @@ tr:nth-child(even) {
 }
 
 @media only screen and (max-width: 800px) {
+    table {
+        width: 95vw;
+    }
+
     .fullname {
         display: none;
+    }
+
+    .input-material-ui {
+        width: 40vw !important
     }
 }
 
@@ -58,6 +66,9 @@ tr:nth-child(even) {
 }
 
 @media only screen and (max-width: 410px) {
+    table {
+        width: 90vw;
+    }
     .admin-name {
         display: none;
     }
